@@ -1,27 +1,60 @@
 import * as Device from 'expo-device';
-import { Platform, StyleSheet, View, Text } from 'react-native';
+import { Platform, StyleSheet, View, Text, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedIcon } from '@/components/animated-icon';
 import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
+// import { ThemedText } from '@/components/themed-text';
+// import { ThemedView } from '@/components/themed-view';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { useState } from 'react';
 
 const descripcion = 'Esto es una Descripcion'
 
 export default function HomeScreen() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
-    <ThemedView style={{margin: 200, height: 100, width:250}}>
-      <ThemedText style={{}}>
-        <ThemedText style={{fontWeight: 'bold'}}>Total: </ThemedText>
-          $1.250 con<ThemedText style={{ color: 'crimson' }}> 20% off</ThemedText>
-      </ThemedText>
 
-    <ThemedText numberOfLines={2} ellipsizeMode="tail">{descripcion}</ThemedText>
-    <ThemedText onPress={console.log}>Ver términos</ThemedText>   
-    </ThemedView>
+    <View style={{margin: 70 , height: 100, width:250}}>
+
+      <View>
+        <Text allowFontScaling={true}>Email</Text>
+        <TextInput style={{borderColor: 'black', borderWidth: 1}}
+          placeholder="Ingrese su email"
+          keyboardType="email-address"
+          value={email}
+          onChangeText={setEmail}
+        />        
+      </View>
+
+      <View>
+        <Text allowFontScaling={true}>Contraseña</Text>
+        <TextInput style={{borderColor: 'black', borderWidth: 1}}
+          placeholder="Ingrese su contraseña"
+          secureTextEntry={true}
+          value={password}
+          onChangeText={setPassword}
+        /> 
+      </View>
+
+
+      
+      {/* <View style={{borderColor: 'blue', borderWidth: 1}}>
+        <TextInput/>
+      </View>
+
+
+      <Text style={{}}>
+        <Text style={{fontWeight: 'bold'}}>Total: </Text>
+          $1.250 con<Text style={{ color: 'crimson' }}> 20% off</Text>
+      </Text>
+
+    <Text numberOfLines={2} ellipsizeMode="tail">{descripcion}</Text>
+    <Text onPress={console.log}>Ver términos</Text>    */}
+    
+    </View>
   )
 }
 
