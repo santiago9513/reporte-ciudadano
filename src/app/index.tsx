@@ -28,7 +28,7 @@ export default function HomeScreen() {
           onChangeText={setEmail}
         />        
       </View>
-
+      
       <View>
         <Text allowFontScaling={true}>Contraseña</Text>
         <TextInput style={{borderColor: 'black', borderWidth: 1}}
