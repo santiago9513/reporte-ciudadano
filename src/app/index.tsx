@@ -4,58 +4,51 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AnimatedIcon } from '@/components/animated-icon';
 import { HintRow } from '@/components/hint-row';
-// import { ThemedText } from '@/components/themed-text';
-// import { ThemedView } from '@/components/themed-view';
+import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
+import { ThemedTextInput } from '@/components/themed-text-input';
 import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 import { useState } from 'react';
 
-const descripcion = 'Esto es una Descripcion'
-
-export default function HomeScreen() {
+export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   return (
 
-    <View style={{margin: 70 , height: 100, width:250}}>
-
-      <View>
-        <Text allowFontScaling={true}>Email</Text>
-        <TextInput style={{borderColor: 'black', borderWidth: 1}}
+    <ThemedView style={styles.container}>
+      <SafeAreaView style={styles.safeArea}>
+        <ThemedView style={styles.heroSection}>
+          <AnimatedIcon />
+          <ThemedText type="title" style={styles.title}>
+            Reporte Ciudadano
+          </ThemedText>
+        </ThemedView>
+        <ThemedText type="code" style={styles.code}>
+          Ingresa tus credenciales
+        </ThemedText>
+        <ThemedTextInput
+          style={[styles.input, { borderColor: 'blue'  }]}
           placeholder="Ingrese su email"
           keyboardType="email-address"
+          autoCapitalize="none"
+          autoCorrect={false}
           value={email}
           onChangeText={setEmail}
-        />        
-      </View>
-      
-      <View>
-        <Text allowFontScaling={true}>Contraseña</Text>
-        <TextInput style={{borderColor: 'black', borderWidth: 1}}
+        />
+        <ThemedTextInput
+          style={[styles.input, { borderColor: 'blue'  }]}
           placeholder="Ingrese su contraseña"
           secureTextEntry={true}
+          autoCapitalize="none"
+          autoCorrect={false}
           value={password}
           onChangeText={setPassword}
-        /> 
-      </View>
-
-
-      
-      {/* <View style={{borderColor: 'blue', borderWidth: 1}}>
-        <TextInput/>
-      </View>
-
-
-      <Text style={{}}>
-        <Text style={{fontWeight: 'bold'}}>Total: </Text>
-          $1.250 con<Text style={{ color: 'crimson' }}> 20% off</Text>
-      </Text>
-
-    <Text numberOfLines={2} ellipsizeMode="tail">{descripcion}</Text>
-    <Text onPress={console.log}>Ver términos</Text>    */}
+        />
+      </SafeAreaView>
+    </ThemedView>
     
-    </View>
-  )
+  );
 }
 
 
@@ -115,38 +108,45 @@ export default function HomeScreen() {
 //   );
 // }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     flexDirection: 'row',
-//   },
-//   safeArea: {
-//     flex: 1,
-//     paddingHorizontal: Spacing.four,
-//     alignItems: 'center',
-//     gap: Spacing.three,
-//     paddingBottom: BottomTabInset + Spacing.three,
-//     maxWidth: MaxContentWidth,
-//   },
-//   heroSection: {
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     flex: 1,
-//     paddingHorizontal: Spacing.four,
-//     gap: Spacing.four,
-//   },
-//   title: {
-//     textAlign: 'center',
-//   },
-//   code: {
-//     textTransform: 'uppercase',
-//   },
-//   stepContainer: {
-//     gap: Spacing.three,
-//     alignSelf: 'stretch',
-//     paddingHorizontal: Spacing.three,
-//     paddingVertical: Spacing.four,
-//     borderRadius: Spacing.four,
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  safeArea: {
+    flex: 1,
+    paddingHorizontal: Spacing.four,
+    alignItems: 'center',
+    gap: Spacing.three,
+    paddingBottom: BottomTabInset + Spacing.three,
+    maxWidth: MaxContentWidth,
+  },
+  heroSection: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    paddingHorizontal: Spacing.four,
+    gap: Spacing.four,
+  },
+  title: {
+    textAlign: 'center',
+  },
+  code: {
+    textTransform: 'uppercase',
+  },
+  stepContainer: {
+    gap: Spacing.three,
+    alignSelf: 'stretch',
+    paddingHorizontal: Spacing.three,
+    paddingVertical: Spacing.four,
+    borderRadius: Spacing.four,
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: Spacing.two,
+    paddingHorizontal: Spacing.three,
+    paddingVertical: Spacing.two,
+    fontSize: 16,
+  },
+});
